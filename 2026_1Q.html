@@ -1141,7 +1141,48 @@
   .delay-3 { animation-delay: 0.3s; opacity: 0; }
   .delay-4 { animation-delay: 0.4s; opacity: 0; }
 
-  /* ─── SCROLLBAR ─── */
+  /* ─── ACTUALS DIVIDER ─── */
+  .actuals-divider-row td {
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+  }
+  .actuals-divider-inner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0 4px;
+  }
+  .actuals-divider-line {
+    flex: 1;
+    height: 1px;
+    background: rgba(237,122,66,0.35);
+  }
+  .actuals-divider-label {
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--orange);
+    white-space: nowrap;
+    background: rgba(237,122,66,0.08);
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(237,122,66,0.25);
+  }
+
+  /* Col highlighting for actuals vs projections */
+  .cf-table th.actual-col,
+  .cf-table td.actual-col { background: rgba(183,215,192,0.06); }
+  .cf-table th.proj-col,
+  .cf-table td.proj-col { background: rgba(237,122,66,0.02); }
+
+  /* Actuals / Projections vertical divide after Mar 26 (6th data column) */
+  .cf-table thead tr th:nth-child(6),
+  .cf-table tbody tr:not(.actuals-divider-row) td:nth-child(6) {
+    border-right: 2px solid rgba(237,122,66,0.4) !important;
+  }
+
   ::-webkit-scrollbar { width: 6px; height: 6px; }
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb { background: rgba(69,74,96,0.2); border-radius: 3px; }
@@ -1220,7 +1261,7 @@
   </div>
   <div class="sidebar-meta">Investor Report — 1Q 2026</div>
   <div class="nav-items">
-    <a class="nav-item" href="#exec-summary" onclick="setActive(this)">
+    <a class="nav-item active" href="#exec-summary" onclick="setActive(this)">
       <span class="nav-num">—</span>
       <span class="nav-label">Executive Summary</span>
     </a>
@@ -1239,7 +1280,7 @@
       <span class="nav-label">Parker, Colorado</span>
       <span class="nav-status status-pending">Pending</span>
     </a>
-    <a class="nav-item active" href="#section4" onclick="setActive(this)">
+    <a class="nav-item" href="#section4" onclick="setActive(this)">
       <span class="nav-num">04</span>
       <span class="nav-label">Austin, Texas</span>
       <span class="nav-status status-pending">Pending</span>
@@ -1268,7 +1309,7 @@
   <!-- TOP HEADER -->
   <div class="top-header">
     <div class="header-left">
-      <h1>Board Meeting — Q1 2026</h1>
+      <h1>Investor Report — Q1 2026</h1>
       <div class="header-sub">Strategic Update &amp; Operational Review</div>
     </div>
     <div class="header-right">
@@ -1340,16 +1381,15 @@
       <div>
         <div class="callout callout-update">
           <div class="callout-title">Key Update</div>
-          <strong>Investor Visa Appointments Secured</strong> — Appointments have been confirmed for late April in Ciudad Juárez. This is a critical structural milestone that enables the proper execution of Luis's relocation and directly supports the opening operations of the first Arenna club.
-        </div>
+          <strong>Investor Visa Appointments Secured — Luis &amp; Fernando</strong> — Both confirmed for late April in Ciudad Juárez. <strong style="color:var(--terra);">Luis relocates to Denver ahead of opening.</strong>        </div>
       </div>
 
       <div>
         <div class="callout callout-nextstep">
           <div class="callout-title">Next Steps</div>
           <ul class="styled-list">
-            <li>Attend investor visa appointments in late April — Ciudad Juárez</li>
-            <li>Execute relocation plan for Luis upon visa confirmation</li>
+            <li>Attend visa appointments — late April, Ciudad Juárez (Luis &amp; Fernando)</li>
+            <li><strong>Luis relocates to Denver</strong> upon confirmation — timed to opening</li>
           </ul>
         </div>
       </div>
@@ -2065,9 +2105,17 @@
       </div>
     </div>
 
-    <div class="callout callout-nextstep" style="margin-bottom:24px;">
-      <div class="callout-title">Upcoming Funding Milestone</div>
-      <strong>Second Investor Capital Call — Targeted July 2026.</strong> The Board should plan for this milestone as Denver ramps to opening and construction requirements across Fort Worth and other sites continue to draw on capital.
+    <!-- CAPITAL CALL (moved above flow) -->
+    <div style="background: linear-gradient(135deg, var(--blue) 0%, #2d3148 100%); border-radius: 14px; padding: 28px 32px; margin-bottom: 28px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+      <div>
+        <div style="font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--orange); margin-bottom: 8px;">Upcoming Funding Milestone</div>
+        <div style="font-size: 20px; font-weight: 800; color: var(--cream); letter-spacing: -0.3px;">2nd Investor Capital Call</div>
+        <div style="font-family: 'Noto Serif', serif; font-style: italic; font-size: 13px; color: rgba(255,249,243,0.55); margin-top: 4px;">Targeted June 2026 — align on timeline, amount, and structure ahead of Q3</div>
+      </div>
+      <div style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 18px 28px; text-align: center; flex-shrink: 0;">
+        <div style="font-size: 28px; font-weight: 800; color: var(--orange);">Jun 2026</div>
+        <div style="font-size: 10px; color: rgba(255,249,243,0.5); margin-top: 4px; letter-spacing: 0.5px;">Target Date</div>
+      </div>
     </div>
 
     <!-- KPI SUMMARY ROW -->
@@ -2081,7 +2129,7 @@
         <div class="metric-label">Total Equity Raised<br>(cumulative)</div>
       </div>
       <div class="invest-metric" style="border-top-color:var(--terra);">
-        <div class="metric-val" style="color:var(--terra); font-size:22px;">Jul 2026</div>
+        <div class="metric-val" style="color:var(--terra); font-size:22px;">Jun 2026</div>
         <div class="metric-label">2nd Capital Call<br>Target Date</div>
       </div>
     </div>
@@ -2095,8 +2143,8 @@
             <th>Dec 25</th>
             <th>Jan 26</th>
             <th>Feb 26</th>
-            <th>Mar 26</th>
-            <th>Apr 26</th>
+            <th style="position: relative;">Mar 26 <span style="font-size:8px; display:block; color:var(--orange); font-weight:800; letter-spacing:1px;">ACTUAL ◀</span></th>
+            <th style="border-left: none;">Apr 26 <span style="font-size:8px; display:block; color:var(--text-soft); font-weight:600; letter-spacing:1px;">PROJ ▶</span></th>
             <th>May 26</th>
             <th>Jun 26</th>
             <th>Jul 26</th>
@@ -2143,7 +2191,7 @@
 
     <div class="callout callout-board" style="margin-top:20px;">
       <div class="callout-title">Board Visibility</div>
-      The July 2026 capital call is a key upcoming milestone. The Board should align on the timeline, amount, and structure of the second capital call ahead of the Q3 Board Meeting. Current EOP projections suggest capital will be needed before the end of summer 2026 to fund ongoing construction and operating expenses across the portfolio.
+      The June 2026 capital call is a key upcoming milestone. The Board should align on the timeline, amount, and structure ahead of the Q3 Board Meeting. Current EOP projections suggest capital will be needed before the end of summer 2026 to fund ongoing construction and operating expenses across the portfolio.
     </div>
   </section>
 
@@ -2190,6 +2238,35 @@
     });
   });
 
+  // Active nav tracking on scroll via IntersectionObserver
+  (function() {
+    const sectionIds = ['exec-summary','section1','section2','section3','section4','section5','section6','section7_cash'];
+    const navLinks = {};
+    sectionIds.forEach(id => {
+      const link = document.querySelector('.nav-item[href="#' + id + '"]');
+      if (link) navLinks[id] = link;
+    });
+
+    let activeId = null;
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          if (navLinks[id]) {
+            document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+            navLinks[id].classList.add('active');
+            activeId = id;
+          }
+        }
+      });
+    }, { rootMargin: '-10% 0px -60% 0px', threshold: 0 });
+
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) obs.observe(el);
+    });
+  })();
+
   // Animate progress bars on scroll
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {
@@ -2203,6 +2280,7 @@
 
   document.querySelectorAll('.card').forEach(card => observer.observe(card));
 </script>
+
 
 
 
